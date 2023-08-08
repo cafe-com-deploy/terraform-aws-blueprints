@@ -11,11 +11,11 @@ output "zone_id" {
 }
 
 output "private_listener_arn" {
-  value = var.private != null ? aws_lb_listener.private.arn : null
+  value = var.private != null ? aws_lb_listener.private[0].arn : null
 }
 
 output "public_listener_arn" {
-  value = var.public != null ? aws_lb_listener.public.arn : null
+  value = var.public != null ? aws_lb_listener.public[0].arn : null
 }
 
 output "security_group_id" {

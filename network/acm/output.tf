@@ -10,6 +10,6 @@ output "domain_validation_options" {
   value = aws_acm_certificate.domain.domain_validation_options
 }
 
-output "fqdn" {
-  value = aws_route53_record.record_validate[*].fqdn
+output "record_validate" {
+  value = aws_route53_record.record_validate
 }

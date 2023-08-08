@@ -4,8 +4,6 @@ module "vpc" {
   version = "5.1.1"
   name    = "vpc-${var.region}-${var.environment}"
 
-  cidr = var.cidr_block
-
   azs             = var.zones[*].az
   private_subnets = var.zones[*].private_subnet_cidr
   public_subnets  = var.zones[*].public_subnet_cidr
