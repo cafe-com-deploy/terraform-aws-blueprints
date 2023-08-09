@@ -12,8 +12,5 @@ module "network" {
   tags   = local.tags
   domain_name = local.domain_name
   environment = local.environment
-  balancer = {
-    name = "my-domain-balancer"
-  }
 }
 ```

@@ -54,7 +54,7 @@ variable "certificate" {
   type = object({
     enabled                   = bool
     subject_alternative_names = optional(list(string), [])
-    imports                   = optional(object({
+    imports = optional(object({
       arn = string
     }))
   })
@@ -74,10 +74,28 @@ variable "route53" {
 
 variable "balancer" {
   type = object({
-    enabled        = optional(bool, true)
-    name           = string
+    enabled        = bool
+    name           = optional(string, "myorg-balancer")
     enable_private = optional(bool, false)
     enable_public  = optional(bool, true)
     ssl_policy     = optional(string, "ELBSecurityPolicy-2016-08")
   })
+  default = {
+    enabled = true
+  }
+}
+
+variable "cluster_ecs" {
+  type = object({
+    enabled                   = bool
+    name                      = optional(string, "myorg-cluster")
+    enable_container_insights = optional(bool, false)
+    capacity_providers        = optional(list(string), ["FARGATE", "FARGATE_SPOT"])
+    retention_in_days         = optional(number, 30)
+    enable_service_discovery  = optional(bool, false)
+    internal_domain           = optional(string, "myorg.corp")
+  })
+  default = {
+    enabled = true
+  }
 }

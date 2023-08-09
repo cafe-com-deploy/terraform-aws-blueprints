@@ -17,3 +17,8 @@ output "balancer" {
   description = "Module ALB outputs"
   value = var.balancer.enabled ? module.balancer[0] : null
 }
+
+output "cluster_ecs" {
+  description = "Module ECS outputs"
+  value = var.cluster_ecs.enabled ? module.cluster_ecs[0] : null
+}
